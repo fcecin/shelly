@@ -1,0 +1,7 @@
+#!/bin/bash
+# Fake claude. It records the arguments and stdin, then prints FAKE_OUT.
+printf '%s\n' "$@" > "$FAKE_DIR/claude.args"
+cat > "$FAKE_DIR/claude.stdin"
+echo "fake claude stderr" >&2
+printf '%b' "${FAKE_OUT-}"
+exit "${FAKE_RC:-0}"

@@ -1,0 +1,15 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Lint the scripts
+        run: shellcheck shelly tests/run.sh tests/fake/claude tests/fake/codex
+      - name: Run the tests
+        run: tests/run.sh
